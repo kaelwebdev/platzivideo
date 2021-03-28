@@ -7,6 +7,7 @@ module.exports = {
   devtool: 'inline-source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    assetModuleFilename: 'assets/[hash].[ext]',
     filename: 'bundle.js',
     sourceMapFilename: 'bundle.js.map',
   },
@@ -39,6 +40,10 @@ module.exports = {
           'css-loader',
           'sass-loader',
         ],
+      },
+      {
+        test: /\.(png|gif|jpg)$/,
+        type: 'asset/resource',
       },
     ],
   },
