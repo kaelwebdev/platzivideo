@@ -1,28 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Header from '../components/Header';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 import Footer from '../components/Footer';
+import userInitialState from '../hooks/useInitialState';
 
 import '../assets/styles/App.scss';
 
-const App = () => {
-  const [videos, setVideos] = useState([]);
-  useEffect(() => {
-    fetch('http://localhost:4001/initialState')
-      .then((r) => r.json())
-      .then((data) => setVideos(data));
-  }, []);
+const API = 'http://localhost:4001/initialState';
 
-  console.log(videos);
+const App = () => {
+  const initialState = userInitialState(API);
   return (
     <div className='App'>
       <Header />
       <Search />
       {
-        videos.mylist?.length > 0 &&
+        initialState.mylist?.length > 0 &&
         (
           <Categories title='Mi lista'>
             <Carousel>
@@ -34,7 +30,7 @@ const App = () => {
       <Categories title='Tendencias'>
         <Carousel>
           {
-            videos.trends?.map((item) => {
+            initialState.trends?.map((item) => {
               /* eslint-disable react/jsx-props-no-spreading */
               return (<CarouselItem key={item.id} {...item} />);
               /* eslint-enable react/jsx-props-no-spreading */
@@ -46,7 +42,7 @@ const App = () => {
       <Categories title='Originales de Platzi video'>
         <Carousel>
           {
-            videos.originals?.map((item) => {
+            initialState.originals?.map((item) => {
               /* eslint-disable react/jsx-props-no-spreading */
               return (<CarouselItem key={item.id} {...item} />);
               /* eslint-enable react/jsx-props-no-spreading */
