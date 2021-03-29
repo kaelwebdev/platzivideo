@@ -22,7 +22,13 @@ const App = () => {
         (
           <Categories title='Mi lista'>
             <Carousel>
-              <CarouselItem />
+              {
+                initialState.mylist?.map((item) => {
+                  /* eslint-disable react/jsx-props-no-spreading */
+                  return (<CarouselItem key={item.id} {...item} />);
+                  /* eslint-enable react/jsx-props-no-spreading */
+                })
+              }
             </Carousel>
           </Categories>
         )
