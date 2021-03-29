@@ -1,39 +1,33 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
-import userInitialState from '../hooks/useInitialState';
 
 import '../assets/styles/App.scss';
 
-const API = 'http://localhost:4001/initialState';
+const Home = ({ myList, trends, originals }) => {
 
-const Home = () => {
-  const initialState = userInitialState(API);
   return (
     <>
       <Search />
-      {
-        initialState.mylist?.length > 0 &&
-        (
-          <Categories title='Mi lista'>
-            <Carousel>
-              {
-                initialState.mylist?.map((item) => {
-                  /* eslint-disable react/jsx-props-no-spreading */
-                  return (<CarouselItem key={item.id} {...item} />);
-                  /* eslint-enable react/jsx-props-no-spreading */
-                })
-              }
-            </Carousel>
-          </Categories>
-        )
-      }
+
+      <Categories title='Mi lista'>
+        <Carousel>
+          {
+            myList?.map((item) => {
+              /* eslint-disable react/jsx-props-no-spreading */
+              return (<CarouselItem key={item.id} {...item} />);
+              /* eslint-enable react/jsx-props-no-spreading */
+            })
+          }
+        </Carousel>
+      </Categories>
       <Categories title='Tendencias'>
         <Carousel>
           {
-            initialState.trends?.map((item) => {
+            trends?.map((item) => {
               /* eslint-disable react/jsx-props-no-spreading */
               return (<CarouselItem key={item.id} {...item} />);
               /* eslint-enable react/jsx-props-no-spreading */
@@ -45,7 +39,7 @@ const Home = () => {
       <Categories title='Originales de Platzi video'>
         <Carousel>
           {
-            initialState.originals?.map((item) => {
+            originals?.map((item) => {
               /* eslint-disable react/jsx-props-no-spreading */
               return (<CarouselItem key={item.id} {...item} />);
               /* eslint-enable react/jsx-props-no-spreading */
@@ -57,4 +51,12 @@ const Home = () => {
   );
 };
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    myList: state.myList,
+    trends: state.trends,
+    originals: state.originals,
+  };
+};
+
+export default connect(mapStateToProps, null)(Home);
