@@ -12,18 +12,22 @@ const Home = ({ myList, trends, originals }) => {
   return (
     <>
       <Search />
-
-      <Categories title='Mi lista'>
-        <Carousel>
-          {
-            myList?.map((item) => {
-              /* eslint-disable react/jsx-props-no-spreading */
-              return (<CarouselItem key={item.id} {...item} />);
-              /* eslint-enable react/jsx-props-no-spreading */
-            })
-          }
-        </Carousel>
-      </Categories>
+      {
+        myList.length > 0 &&
+        (
+          <Categories title='Mi lista'>
+            <Carousel>
+              {
+                myList?.map((item) => {
+                  /* eslint-disable react/jsx-props-no-spreading */
+                  return (<CarouselItem key={item.id} {...item} />);
+                  /* eslint-enable react/jsx-props-no-spreading */
+                })
+              }
+            </Carousel>
+          </Categories>
+        )
+      }
       <Categories title='Tendencias'>
         <Carousel>
           {
