@@ -20,7 +20,13 @@ const Home = ({ myList, trends, originals }) => {
               {
                 myList?.map((item) => {
                   /* eslint-disable react/jsx-props-no-spreading */
-                  return (<CarouselItem key={item.id} {...item} />);
+                  return (
+                    <CarouselItem
+                      key={item.id}
+                      {...item}
+                      isList
+                    />
+                  );
                   /* eslint-enable react/jsx-props-no-spreading */
                 })
               }
