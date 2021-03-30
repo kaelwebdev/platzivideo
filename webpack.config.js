@@ -10,6 +10,7 @@ module.exports = {
     assetModuleFilename: 'assets/[hash].[ext]',
     filename: 'bundle.js',
     sourceMapFilename: 'bundle.js.map',
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
