@@ -1,6 +1,6 @@
 import {
   SET_FAVORITE, DELETE_FAVORITE, LOGIN_REQUEST,
-  LOGOUT_REQUEST, REGISTER_REQUEST,
+  LOGOUT_REQUEST, REGISTER_REQUEST, GET_VIDEO_SOURCE
 } from './actionTypes';
 
 export const setFavorite = (payload) => ({
@@ -25,5 +25,10 @@ export const logoutRequest = (payload) => ({
 
 export const registerRequest = (payload) => ({
   type: REGISTER_REQUEST,
+  payload,
+});
+
+export const getVideoSource = (payload) => ({
+  type: GET_VIDEO_SOURCE,
   payload,
 });
