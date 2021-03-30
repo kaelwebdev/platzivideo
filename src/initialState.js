@@ -1,5 +1,6 @@
 /* eslint-disable quotes, comma-dangle */
 const initialState = {
+  "isCustomHeader": false,
   "user": {},
   "playing": {},
   "myList": [],

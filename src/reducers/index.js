@@ -1,6 +1,7 @@
 import {
   SET_FAVORITE, DELETE_FAVORITE, LOGIN_REQUEST,
   LOGOUT_REQUEST, REGISTER_REQUEST, GET_VIDEO_SOURCE,
+  ENABLE_CUSTOM_HEADER,
 } from '../actions/actionTypes';
 
 const reducer = (state, action) => {
@@ -43,6 +44,11 @@ const reducer = (state, action) => {
           state.originals
             .find((i) => i.id === Number(action.payload)) ||
           [],
+      };
+    case ENABLE_CUSTOM_HEADER:
+      return {
+        ...state,
+        isCustomHeader: action.payload,
       };
   }
 };

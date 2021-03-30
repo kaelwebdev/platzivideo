@@ -10,15 +10,14 @@ import logo from '../assets/static/imgs/logo-platzi-video-BW2.png';
 import userIcon from '../assets/static/icons/user-icon.png';
 
 const Header = (props) => {
-  const { user, isLogin, isRegister } = props;
+  const { user, isCustomHeader } = props;
   const hasUser = Object.keys(user).length > 0;
   const handleLogout = () => {
     props.logoutRequest({});
   };
 
   const headerClass = classNames('header', {
-    isLogin,
-    isRegister,
+    isCustomHeader,
   });
 
   return (
@@ -72,6 +71,7 @@ Header.propTypes = {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    isCustomHeader: state.isCustomHeader,
   };
 };
 

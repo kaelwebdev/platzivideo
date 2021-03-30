@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../assets/styles/components/Register.scss';
-import { registerRequest } from '../actions';
-import Header from '../components/Header';
+import { registerRequest, enableCustomHeader } from '../actions';
 
 const Register = (props) => {
 
@@ -26,9 +25,15 @@ const Register = (props) => {
     props.history.push('/');
   };
 
+  useEffect(() => {
+    props.enableCustomHeader(true);
+    return () => {
+      props.enableCustomHeader(false);
+    };
+  }, []);
+
   return (
     <>
-      <Header isRegister />
       <section className='register'>
         <section className='register__container'>
           <h2>Regístrate</h2>
@@ -67,6 +72,7 @@ const Register = (props) => {
 
 const mapDispatchToProps = {
   registerRequest,
+  enableCustomHeader,
 };
 
 export default connect(null, mapDispatchToProps)(Register);

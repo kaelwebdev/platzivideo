@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
-import { loginRequest } from '../actions';
+import { loginRequest, enableCustomHeader } from '../actions';
 import '../assets/styles/components/Login.scss';
 import googleIcon from '../assets/static/icons/google-icon.png';
 import twitterIcon from '../assets/static/icons/twitter-icon.png';
@@ -25,9 +24,15 @@ const Login = (props) => {
     props.history.push('/');
   };
 
+  useEffect(() => {
+    props.enableCustomHeader(true);
+    return () => {
+      props.enableCustomHeader(false);
+    };
+  }, []);
+
   return (
     <>
-      <Header isLogin />
       <section className='login'>
         <section className='login__container'>
           <h2>Inicia sesión</h2>
@@ -83,6 +88,7 @@ const Login = (props) => {
 
 const mapDispatchToProps = {
   loginRequest,
+  enableCustomHeader,
 };
 
 export default connect(null, mapDispatchToProps)(Login);

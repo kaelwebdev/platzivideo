@@ -1,6 +1,7 @@
 import {
   SET_FAVORITE, DELETE_FAVORITE, LOGIN_REQUEST,
-  LOGOUT_REQUEST, REGISTER_REQUEST, GET_VIDEO_SOURCE
+  LOGOUT_REQUEST, REGISTER_REQUEST, GET_VIDEO_SOURCE,
+  ENABLE_CUSTOM_HEADER,
 } from './actionTypes';
 
 export const setFavorite = (payload) => ({
@@ -30,5 +31,10 @@ export const registerRequest = (payload) => ({
 
 export const getVideoSource = (payload) => ({
   type: GET_VIDEO_SOURCE,
+  payload,
+});
+
+export const enableCustomHeader = (payload) => ({
+  type: ENABLE_CUSTOM_HEADER,
   payload,
 });
