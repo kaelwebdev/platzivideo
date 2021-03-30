@@ -52,12 +52,16 @@ const CarouselItem = (props) => {
   );
 };
 
-CarouselItem.prototype = {
+CarouselItem.propTypes = {
+  id: PropTypes.number,
   cover: PropTypes.string,
   title: PropTypes.string,
   year: PropTypes.number,
   contentRating: PropTypes.string,
   duration: PropTypes.number,
+  isList: PropTypes.bool,
+  setFavorite: PropTypes.func,
+  deleteFavorite: PropTypes.func,
 };
 
 const mapDispatchToProps = {
