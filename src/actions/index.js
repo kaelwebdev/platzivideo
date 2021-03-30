@@ -1,6 +1,6 @@
 import {
   SET_FAVORITE, DELETE_FAVORITE, LOGIN_REQUEST,
-  LOGOUT_REQUEST,
+  LOGOUT_REQUEST, REGISTER_REQUEST,
 } from './actionTypes';
 
 export const setFavorite = (payload) => ({
@@ -20,5 +20,10 @@ export const loginRequest = (payload) => ({
 
 export const logoutRequest = (payload) => ({
   type: LOGOUT_REQUEST,
+  payload,
+});
+
+export const registerRequest = (payload) => ({
+  type: REGISTER_REQUEST,
   payload,
 });

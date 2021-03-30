@@ -1,6 +1,6 @@
 import {
   SET_FAVORITE, DELETE_FAVORITE, LOGIN_REQUEST,
-  LOGOUT_REQUEST,
+  LOGOUT_REQUEST, REGISTER_REQUEST,
 } from '../actions/actionTypes';
 
 const reducer = (state, action) => {
@@ -26,6 +26,11 @@ const reducer = (state, action) => {
         user: action.payload,
       };
     case LOGOUT_REQUEST:
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case REGISTER_REQUEST:
       return {
         ...state,
         user: action.payload,
