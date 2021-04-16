@@ -4,12 +4,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './src/index.js',
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    assetModuleFilename: 'assets/[hash].[ext]',
+    assetModuleFilename: 'assets/[hash][ext]',
     filename: 'bundle.js',
-    sourceMapFilename: 'bundle.js.map',
     publicPath: '/',
   },
   resolve: {
@@ -43,7 +42,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|gif|jpg|webp)$/,
+        test: /\.(png|gif|jpg|webp|mp4)$/,
         type: 'asset/resource',
       },
     ],

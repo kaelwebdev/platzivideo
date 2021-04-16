@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { getVideoSource } from '../actions';
 import '../assets/styles/components/Player.scss';
+import testVideo from '../assets/static/test.mp4';
 
 const Player = (props) => {
   const { match, playing } = props;
@@ -21,7 +22,8 @@ const Player = (props) => {
   return hasPlaying ? (
     <div className='Player'>
       <video controls autoPlay>
-        <source src={playing.source} type='video/mp4' />
+        {/* src={playing.source}*/ }
+        <source src={testVideo} type='video/mp4' />
       </video>
       <div className='Player-back'>
         <button type='button' onClick={() => props.history.goBack()}>
